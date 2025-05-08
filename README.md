@@ -16,6 +16,7 @@ Todos los elementos anteriormente mencionados se encuentran conectados en su fun
 • Implementacion del control de motores.
 • Implementacion y prueba de control de velocidad por intervalos de
 tiempo.  
+
 • Implementacion de codigo de cinematica y control de velocidad con el
 IMU  		
 
