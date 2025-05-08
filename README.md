@@ -8,7 +8,9 @@ El proyecto consiste en la aplicación de conocimientos sobre robótica, permiti
 • Explicacion y conexion correcta de componentes.
 
 Sensor ultrasónico HC-SR04: El robot móvil diferencial cuenta con la particularidad de responder de manera adecuada a las paredes u otros obstaculos que se interpongan en su camino. El sensor le permite calcular distancias hasta obstaculos en dirección recta hacia él.
+
 sensor IMU-6050: El robot ensamblado cuenta con la habilidad de avanzar y girar gracias a esta conexión, que permite controlar sus movimientos. Estos movimientos los realiza mediante dos motores y dos ruedas conectadas al sistema.
+
 Todos los elementos anteriormente mencionados se encuentran conectados en su funcionamiento mediante un microcontrolador Arduino Uno, el cual permite una mayor percepción por parte del robot diferencial.
 
 • Implementacion del control de motores.
