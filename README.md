@@ -15,7 +15,16 @@ Todos los elementos anteriormente mencionados se encuentran conectados en su fun
 
 • Implementacion del control de motores.
 • Implementacion y prueba de control de velocidad por intervalos de
-tiempo.
+tiempo.  
 • Implementacion de codigo de cinematica y control de velocidad con el
-IMU
+IMU  		
+
+El código implementa un sistema básico de cinemática diferencial y control de velocidad para un robot móvil, donde se estima la posición (x, y)
+y la orientación θ del robot en el tiempo mediante una simulación basada en el modelo de ruedas diferenciales.
+El movimiento se controla por fases (avance, giro y detención), y las velocidades de los motores se convierten en velocidades lineales usando un factor K_vel.
+
 • Ajuste de direccion y correccion de inclinacion usando el IMU 
+
+Este programa implementa un sistema de navegación recta automática para un robot móvil, usando un IMU MPU9250.
+El enfoque se basa únicamente en lecturas del giroscopio (gyroZ) para detectar desviaciones laterales (giro en eje Z) y
+realizar correcciones a través del control diferencial de los motores.
