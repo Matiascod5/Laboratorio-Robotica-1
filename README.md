@@ -12,9 +12,10 @@
 
 #LINK VIDEOS: https://drive.google.com/drive/folders/1lcxLrsuCurR6A5LsiarIUT4XW50D7ADl?usp=sharing
 ---
-
+### Descripción del proyecto
+El Laboratorio 2 se enfocó en desarrollar un sistema de percepción y planificación básica para un robot móvil autónomo utilizando Arduino. El proyecto consistió en conectar sensores como el HC-SR04 (ultrasónico) y el sensor RGB, procesar sus datos mediante técnicas de filtrado y umbralización, y luego implementar una lógica de navegación reactiva basada en la detección de obstáculos y colores. El robot fue programado para detenerse ante ciertos colores y evitar obstáculos, integrando así percepción sensorial y control de movimiento de manera autónoma.
 ## 🔧 Parte 1: Configuración del Hardware y pruebas iniciales
-
+---
 ### Evaluaciones
 
 - **Conexión correcta de componentes:**  
