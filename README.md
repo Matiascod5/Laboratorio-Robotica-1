@@ -1,47 +1,72 @@
-Integrantes:
+# Laboratorio 2 - Robótica y Sistemas Autónomos
 
+**Curso:** ICI4150  
+**Profesor:** Sandra Cano  
+**Tema:** Sensores, Percepción y Planificación Básica con procesamiento de datos en Robótica Móvil  
+**Integrantes del grupo:** 
 - Adolfo Cordero
 - Ruben Carvajal
 - Matias Castro
 - Carlos Da silva
 - Sebastian Gatica
 
-# Laboratorio-Robotica-1
-#LINK VIDEOS: https://drive.google.com/drive/folders/15AlvotKpdCCnD1rTmeP-yavsMe0CPimI?usp=sharing 
+#LINK VIDEOS: https://drive.google.com/drive/folders/1lcxLrsuCurR6A5LsiarIUT4XW50D7ADl?usp=sharing
+---
 
-Descripción del proyecto
+## 🔧 Parte 1: Configuración del Hardware y pruebas iniciales
 
-El proyecto consiste en la aplicación de conocimientos sobre robótica, permitiendo así profundizar en el área práctica de la robótica ensamblando un sistema compuesto de un microcontrolador, sensores, ruedas, entre otros elementos, fusionandolos para la elaboración de un robot móvil diferencial.
+### Evaluaciones
 
-• Explicacion y conexion correcta de componentes.
+- **Conexión correcta de componentes:**  
+  Se conectó exitosamente el sensor ultrasónico HC-SR04 y el sensor RGB al Arduino UNO. Se validó su funcionamiento en el video `PARTE1.mp4`.
+  El HC-SR04 fue configurado para medir distancias con sus pines TRIG y ECHO, y el RGB para detectar colores a través de sus canales. Se verificó su funcionamiento en el video PARTE1.mp4, donde ambos sensores    muestran lecturas activas por monitor serie, confirmando que la conexión fue exitosa
 
-Sensor ultrasónico HC-SR04: El robot móvil diferencial cuenta con la particularidad de responder de manera adecuada a las paredes u otros obstaculos que se interpongan en su camino. El sensor le permite calcular distancias hasta obstaculos en dirección recta hacia él.
+- **Código funcional:**  
+  El archivo `Parte1_Percep.ino` muestra correctamente por monitor serie los datos de distancia y color.
 
-sensor IMU-6050: El robot ensamblado cuenta con la habilidad de avanzar y girar gracias a esta conexión, que permite controlar sus movimientos. Estos movimientos los realiza mediante dos motores y dos ruedas conectadas al sistema.
+- **Análisis de variaciones en las lecturas:**  
+  Se observó cómo influye la iluminación, la superficie y la distancia en la precisión de las mediciones.
 
-Todos los elementos anteriormente mencionados se encuentran conectados en su funcionamiento mediante un microcontrolador Arduino Uno, el cual permite una mayor percepción por parte del robot diferencial.
+- **Respuestas teóricas:**
 
-• Implementacion del control de motores.
+  - ¿Qué es la percepción en robótica?  
+    Es la capacidad del robot para interpretar su entorno usando sensores. Es esencial en sistemas autónomos porque permite la toma de decisiones.
 
-se usaron dos motores DC montados en una configuración diferencial. El control se logró combinando pines digitales, que determinan la dirección de giro, y señales PWM, que regulan la velocidad de cada motor. Se usaron cuatro pines digitales para indicar si cada motor debía girar hacia adelante o hacia atrás.
-A través del PWM, se pudo controlar la velocidad de forma individual para cada lado del robot.
-Se implementaron funciones como moverRobot(), detener(), retroceder() y girarDerecha(), lo que permitió manejar el movimiento del robot de manera sencilla y efectiva.
-El comportamiento del robot se definió ajustando el duty cycle de las señales PWM según la acción deseada, y combinando eso con el estado de los pines de dirección. Esto le permitió al robot avanzar en línea recta, girar sobre su eje o retroceder según fuera necesario.
+  - ¿Qué mide el sensor ultrasónico?  
+    El tiempo de vuelo de la onda sonora (ida y vuelta), con lo cual se calcula la distancia.
 
-• Implementacion y prueba de control de velocidad por intervalos de
-tiempo. 
+  - ¿Cómo influye el ruido y cómo reducirlo?  
+    Puede generar errores en la lectura. Se puede aplicar filtrado (media móvil, Kalman, pasa bajos) o usar sensores adicionales para mejorar precisión.
 
-La implementación del control de velocidad por intervalos de tiempo se realiza usando la función millis() para medir el tiempo transcurrido y dividir el movimiento del robot en fases (avanzar, girar, detenerse). En cada fase, la velocidad de los motores se ajusta según el tiempo transcurrido.
+---
 
-• Implementacion de codigo de cinematica y control de velocidad con el
-IMU  		
+## Parte 2: Procesamiento de datos y Algoritmo de Navegación
 
-El código implementa un sistema básico de cinemática diferencial y control de velocidad para un robot móvil, donde se estima la posición (x, y)
-y la orientación θ del robot en el tiempo mediante una simulación basada en el modelo de ruedas diferenciales.
-El movimiento se controla por fases (avance, giro y detención), y las velocidades de los motores se convierten en velocidades lineales usando un factor K_vel.
+### Evaluaciones
 
-• Ajuste de direccion y correccion de inclinacion usando el IMU 
+- **Algoritmo de planificación reactiva:**  
+  Implementado en `parte2_RGB.ino`. El robot se detiene con rojo y actúa con otros colores. Video de prueba: `PARTE2.mp4`.
 
-Este programa implementa un sistema de navegación recta automática para un robot móvil, usando un IMU MPU9250.
-El enfoque se basa únicamente en lecturas del giroscopio (gyroZ) para detectar desviaciones laterales (giro en eje Z) y
-realizar correcciones a través del control diferencial de los motores.
+- **Umbralización:**  
+  Se definieron umbrales para la distancia (10 cm) y colores (R, G, B) para tomar decisiones.
+
+- **Pruebas y ajustes reales:**  
+  El sistema fue probado sobre superficies con colores y obstáculos. Ajustes se evidencian en video `PARTE2.mp4`.
+
+- **Reflexión y respuestas teóricas:**
+
+  - ¿Qué debe hacer si detecta rojo?  
+    Detenerse por seguridad o cambio de contexto.
+
+  - ¿Cómo enfrentar lecturas erráticas del ultrasónico?  
+    Filtros, calibración (offset y ganancia) y/o incorporación de nuevos sensores.
+
+  - ¿Qué nuevo sensor añadirías?  
+    Sensor LiDAR como el VL53L0X por su precisión, velocidad y resistencia al ruido.
+
+  - ¿Cuál es el tiempo de respuesta al cambio de color?  
+    Aproximadamente 50 milisegundos (configurado con `delay(50)`).
+
+---
+
+
